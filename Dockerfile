@@ -5,7 +5,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 RUN locale-gen --purge en_US.UTF-8 && /bin/echo -e  "LANG=$LANG\nLANGUAGE=$LANGUAGE\n" | tee /etc/default/locale && locale-gen $LANGUAGE && dpkg-reconfigure locales
 
-RUN apt-get update -qq && apt-get install -y apt-transport-https curl ca-certificates openssh-server software-properties-common python-dev python-pip python3-dev python3-pip weechat git tmux sudo zsh htop screen dialog mosh telnet netcat && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -qq && apt-get install -y apt-transport-https curl ca-certificates openssh-server software-properties-common python-dev python-pip python3-dev python3-pip weechat git tmux sudo zsh htop screen dialog mosh telnet netcat ncdu && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN curl -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.5.4/bin/linux/amd64/kubectl && chmod +x /usr/bin/kubectl
 RUN add-apt-repository ppa:neovim-ppa/stable && apt-get update && apt-get install -y neovim && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
